@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html ng-app="myApp">
+	<head>
+		<meta charset="utf-8" />
+		<script src="./js/angular.js"></script>
+		<script src="./js/controllers/numpadCtrl.js"></script>
+		<link type="text/css" rel="stylesheet" href="./css/calculator.css" />
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<div>
+				<input type="text" class="display" ng-model="yourName" />
+			</div>
+			<div ng-controller="numpadController">
+				<div class="digits_wrapper">
+					<button class="digit_btn" >1</button>
+					<button class="digit_btn" >2</button>
+					<button class="digit_btn" >3</button>
+					<br />
+					<button class="digit_btn" >4</button>
+					<button class="digit_btn" >5</button>
+					<button class="digit_btn" >6</button>
+					<br />
+					<button class="digit_btn" >7</button>
+					<button class="digit_btn" >8</button>
+					<button class="digit_btn" >9</button>
+					<br />
+					<button class="digit_btn" >0</button>
+					<button class="digit_btn" >.</button>
+					<button class="result_btn" >=</button>
+				</div>
+				<div class="operations_wrapper">
+					<button class="operation_btn" >+</button><br />
+					<button class="operation_btn" >-</button><br />
+					<button class="operation_btn" >/</button><br />
+					<button class="operation_btn" >*</button><br />
+				</div>
+				<br clear="all" />
+				<button class="clear_btn" >C</button>
+			</div>
+		</div>
+		<br clear="all" /><br clear="all" /><br clear="all" /><br clear="all" />
+		<input type="text" ng-model="yourName" />
+		<h1>Привет {{yourName}}!</h1>
+	</body>
+</html>

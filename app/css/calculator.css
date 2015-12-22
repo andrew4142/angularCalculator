@@ -1,0 +1,27 @@
+.wrapper{
+	width:50%;
+	margin: 0 auto;
+	padding-top: 100px;
+}
+.operations_wrapper{
+	float:left;
+}
+.digits_wrapper{
+	float:left;
+}
+.clear_btn {
+	width: 110px;
+}
+button{
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	vertical-align: middle;
+	margin: 3px;
+}
+.display{
+	width: 150px;
+	margin-bottom: 15px;
+	padding: 5px 0px;
+	text-align:right;
+}
