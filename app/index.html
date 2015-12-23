@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html ng-app="myApp">
+<html ng-app="CalculatorApp">
 	<head>
 		<meta charset="utf-8" />
 		<script src="./js/angular.js"></script>
@@ -10,25 +10,19 @@
 	<body>
 		<div class="wrapper" ng-controller="numpadController">
 			<div>
-				<input type="text" class="display" ng-model="operationResult"/>
+				<input type="text" class="display" ng-model="operationResult" />
 			</div>
-			<div >
+			<div>
 				<div  class="digits_wrapper">
 				    <button ng-repeat="digit in digits" class="digit_btn" ng-click="digitClick(digit)">{{digit}}</button>
 				    <button class="result_btn" ng-click="getResult()">=</button>
 				</div>    
 				<div class="operations_wrapper">
-					<button class="operation_btn" ng-click="operationClick('+')">+</button><br />
-					<button class="operation_btn" ng-click="operationClick('-')">-</button><br />
-					<button class="operation_btn" ng-click="operationClick('/')">/</button><br />
-					<button class="operation_btn" ng-click="operationClick('*')">*</button><br />
+					<button class="operation_btn" ng-repeat="ops in operations" ng-click="operationClick(ops.func)">{{ops.name}}</button>
 				</div>
 				<br clear="all" />
-				<button class="clear_btn" >C</button>
+				<button class="clear_btn" ng-click="clearResults()">C</button>
 			</div>
 		</div>
-		<br clear="all" /><br clear="all" /><br clear="all" /><br clear="all" />
-		<input type="text" ng-model="yourName" />
-		<h1>Привет {{yourName}}!</h1>
 	</body>
 </html>
