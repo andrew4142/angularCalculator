@@ -8,16 +8,18 @@
 }
 .digits_wrapper{
 	float:left;
+	width:120px;
 }
 .clear_btn {
 	width: 110px;
 }
 button{
-	width: 30px;
+	width: 33px;
 	height: 30px;
 	text-align: center;
 	vertical-align: middle;
 	margin: 3px;
+	float:left;
 }
 .display{
 	width: 150px;

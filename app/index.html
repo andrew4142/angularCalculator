@@ -8,33 +8,20 @@
 	</head>
 
 	<body>
-		<div class="wrapper">
+		<div class="wrapper" ng-controller="numpadController">
 			<div>
-				<input type="text" class="display" ng-model="yourName" />
+				<input type="text" class="display" ng-model="operationResult"/>
 			</div>
-			<div ng-controller="numpadController">
-				<div class="digits_wrapper">
-					<button class="digit_btn" >1</button>
-					<button class="digit_btn" >2</button>
-					<button class="digit_btn" >3</button>
-					<br />
-					<button class="digit_btn" >4</button>
-					<button class="digit_btn" >5</button>
-					<button class="digit_btn" >6</button>
-					<br />
-					<button class="digit_btn" >7</button>
-					<button class="digit_btn" >8</button>
-					<button class="digit_btn" >9</button>
-					<br />
-					<button class="digit_btn" >0</button>
-					<button class="digit_btn" >.</button>
-					<button class="result_btn" >=</button>
-				</div>
+			<div >
+				<div  class="digits_wrapper">
+				    <button ng-repeat="digit in digits" class="digit_btn" ng-click="digitClick(digit)">{{digit}}</button>
+				    <button class="result_btn" ng-click="getResult()">=</button>
+				</div>    
 				<div class="operations_wrapper">
-					<button class="operation_btn" >+</button><br />
-					<button class="operation_btn" >-</button><br />
-					<button class="operation_btn" >/</button><br />
-					<button class="operation_btn" >*</button><br />
+					<button class="operation_btn" ng-click="operationClick('+')">+</button><br />
+					<button class="operation_btn" ng-click="operationClick('-')">-</button><br />
+					<button class="operation_btn" ng-click="operationClick('/')">/</button><br />
+					<button class="operation_btn" ng-click="operationClick('*')">*</button><br />
 				</div>
 				<br clear="all" />
 				<button class="clear_btn" >C</button>
