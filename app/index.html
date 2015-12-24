@@ -1,28 +1,34 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--use CalculatorApp application for all follwed code-->
 <html ng-app="CalculatorApp">
 	<head>
 		<meta charset="utf-8" />
 		<script src="./js/angular.js"></script>
+		<script src="./js/config/config.js"></script>
 		<script src="./js/controllers/numpadCtrl.js"></script>
 		<link type="text/css" rel="stylesheet" href="./css/calculator.css" />
 	</head>
 
 	<body>
+		<!--use numpadController for this block-->
 		<div class="wrapper" ng-controller="numpadController">
 			<div>
-				<input type="text" class="display" ng-model="operationResult" />
+				<!--input with validate for numbers only-->
+				<input type="text" class="display" ng-model="operationResult" ng-pattern="/^[0-9.]+$/"/>
 			</div>
-			<div>
-				<div  class="digits_wrapper">
-				    <button ng-repeat="digit in digits" class="digit_btn" ng-click="digitClick(digit)">{{digit}}</button>
-				    <button class="result_btn" ng-click="getResult()">=</button>
-				</div>    
-				<div class="operations_wrapper">
-					<button class="operation_btn" ng-repeat="ops in operations" ng-click="operationClick(ops.func)">{{ops.name}}</button>
-				</div>
-				<br clear="all" />
-				<button class="clear_btn" ng-click="clearResults()">C</button>
+
+			<!--block with digit buttons and '=' button-->
+			<div  class="digits_wrapper">
+				<button ng-repeat="digit in digits" class="digit_btn" ng-click="digitClick(digit.value)">{{digit.name}}</button>
+				<button class="result_btn" ng-click="getResult()">=</button>
 			</div>
+			<!--block with opertations buttons-->	
+			<div class="operations_wrapper">
+				<button class="operation_btn" ng-repeat="ops in operations" ng-click="operationClick(ops.func)">{{ops.name}}</button>
+			</div>
+			<br clear="all" />
+			<!--Clear button-->
+			<button class="clear_btn" ng-click="clearResults()">C</button>
 		</div>
 	</body>
 </html>

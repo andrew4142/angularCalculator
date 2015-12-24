@@ -28,3 +28,7 @@ button{
 	padding: 5px 0px;
 	text-align:right;
 }
+.display.ng-invalid {
+    color:white;
+    background: red;
+}

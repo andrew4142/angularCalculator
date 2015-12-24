@@ -1,34 +1,24 @@
-var CalculatorApp = angular.module('CalculatorApp', []);
-CalculatorApp.controller("numpadController", function ($scope) {
-    //default values
-    $scope.digits = [1,2,3,4,5,6,7,8,9,0,'.'];
-    $scope.operations = [
-		{
-			name: '+',
-			func: 'Add'
-		},
-		{
-			name: '-',
-			func: 'Minus'
-		},
-		{
-			name: '/',
-			func: 'Divide'
-		},
-		{
-			name: '*',
-			func: 'Multiply'
-		}
-	];
-			
+var CalculatorApp = angular.module('CalculatorApp');
+
+//Controller for calculator. Can handle press for buttons and calculate result of operations
+CalculatorApp.controller("numpadController", function ($scope, $numpadConfig) {
+	$scope.digits = $numpadConfig.digits;
+	$scope.operations = $numpadConfig.operations;
     $scope.operationResult = 0;
     $scope.newNumber = true;
     $scope.firstNumber = 0;
     $scope.operation = false;
     
+	//if clicked on some number
     $scope.digitClick = function (digit){
 		if ($scope.newNumber){
-			$scope.operationResult = digit.toString();
+			//if first pressed '.' not clear input fully
+			if(digit == '.'){
+				$scope.operationResult = 0+digit.toString();
+			}
+			else{
+				$scope.operationResult = digit.toString();
+			}
 			$scope.newNumber = false;
 		}
 		else{
@@ -36,12 +26,14 @@ CalculatorApp.controller("numpadController", function ($scope) {
 		}
     };
     
+	//if clicked on some operation
     $scope.operationClick = function (operation){
         $scope.operation = operation;
 		$scope.firstNumber = parseFloat($scope.operationResult);
 		$scope.newNumber = true;
     };
     
+	//calculate result of operation
     $scope.getResult = function (){
 		if($scope.operationResult && $scope.operation && $scope.firstNumber){
 			var secondNumber  = $scope.operationResult;
@@ -63,17 +55,11 @@ CalculatorApp.controller("numpadController", function ($scope) {
 		}
     };
 	
+	//clear input and all operations
 	$scope.clearResults = function (){
 		$scope.operationResult = 0;
 		$scope.newNumber = true;
 		$scope.firstNumber = 0;
 		$scope.operation = false;
 	}
-	
- 
-});
-//TODO Create 2 controllers - 1 for view and 2 for numpad and factory(or service) to connect controllers
-
-
-
-
+})
